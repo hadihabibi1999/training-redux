@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, { Component } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button } from 'react-bootstrap';
+import {connect} from 'react-redux';
+import {Container,Row,Col} from 'reactstrap';
+
+
+ class Counter extends Component {
+ 
+   increment=()=>{
+    this.props.dispatch({type:'INCREMENT'})
+   }
+
+   decrement=()=>{
+    this.props.dispatch({type:'DECREMENT'})
+    }
+
+       
+  render() { 
+    return ( 
+      
+        <Container>
+           <Row>
+
+              <Col sm='4'>
+                  <Button  
+                      style={{width:40}}         
+                      onClick={()=>this.decrement()}>
+                        -
+                  </Button>
+               </Col>  
+
+              <Col sm='4'>
+                  <text>
+                      {this.props.count}
+                  </text>
+              </Col>
+
+              <Col sm='4'>
+                  <Button 
+                      style={{width:40}}
+                      onClick={()=>this.increment()}>
+                        +
+                  </Button>
+               </Col>
+             </Row>
+         </Container>
+       
+     );
+  }
 }
 
-export default App;
+ const mapStateToProps = state => ({
+    count:state.count
+ });
+
+export default connect(mapStateToProps)(Counter);
+
+
