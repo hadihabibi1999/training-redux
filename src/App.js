@@ -19,11 +19,11 @@ import {Container,Row,Col} from 'reactstrap';
        
   render() { 
     return ( 
-      
+      <div>
         <Container>
            <Row>
 
-              <Col sm='4'>
+              <Col>
                   <Button  
                       style={{width:40}}         
                       onClick={()=>this.decrement()}>
@@ -31,13 +31,13 @@ import {Container,Row,Col} from 'reactstrap';
                   </Button>
                </Col>  
 
-              <Col sm='4'>
+              <Col>
                   <text>
                       {this.props.count}
                   </text>
               </Col>
 
-              <Col sm='4'>
+              <Col>
                   <Button 
                       style={{width:40}}
                       onClick={()=>this.increment()}>
@@ -46,7 +46,7 @@ import {Container,Row,Col} from 'reactstrap';
                </Col>
              </Row>
          </Container>
-       
+       </div>
      );
   }
 }
